@@ -1,0 +1,39 @@
+server/
+│
+├── src/
+│
+├── config/
+│   ├── db.js
+│   └── redis.js
+│
+├── controllers/
+│   ├── authController.js
+│   ├── roomController.js
+│   └── messageController.js
+│
+├── middleware/
+│   ├── authMiddleware.js
+│   └── errorMiddleware.js
+│
+├── models/
+│   ├── User.js
+│   ├── Room.js
+│   └── Message.js
+│
+├── routes/
+│   ├── authRoutes.js
+│   ├── roomRoutes.js
+│   └── messageRoutes.js
+│
+├── sockets/
+│   ├── index.js
+│   └── chatSocket.js
+│
+├── services/
+│
+├── utils/
+│   ├── generateToken.js
+│   └── ApiError.js
+│
+├── app.js
+└── server.js
