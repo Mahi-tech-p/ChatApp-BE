@@ -77,3 +77,27 @@ export const register = async (req, res) => {
         });
     }
 }
+export const getMe = async (req, res) => {
+    res.status(200).json({
+        user: {
+            id: req.user._id,
+            username: req.user.username,
+            email: req.user.email,
+        },
+    });
+};
+export const logout = async (req, res) => {
+    res
+        .clearCookie("token", {
+            httpOnly: true,
+            sameSite: "lax",
+            secure:
+                process.env.NODE_ENV ===
+                "production",
+        })
+        .status(200)
+        .json({
+            message:
+                "Logged out successfully",
+        });
+};
