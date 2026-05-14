@@ -6,11 +6,11 @@ import mongoose from "mongoose";
 
 import app from "./app.js";
 import { connectDB } from "./config/db.js";
-
+import { initSocket } from "./socket/index.js";
 const PORT = process.env.PORT || 3001;
 
 const server = http.createServer(app);
-
+initSocket(server);
 const gracefulShutdown = async () => {
   console.log("Starting graceful shutdown");
 
