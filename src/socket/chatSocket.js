@@ -17,14 +17,29 @@ const registerChatHandlers = (
   // Send message
   socket.on(
     "send_message",
-    (data) => {
+    async (data) => {
 
       console.log(data);
+      try {
+        const newMessage =
+          await Message.create({
+            sender: data.sender,
+            room: data.room,
+            message: data.message,
+            time: data.time,
+          });
+        io.to(data.room).emit(
+          "receive_message",
+          data
+        );
+      } catch (error) {
+        console.error(
+          "Error saving message:",
+          error
+        );
+      }
 
-      io.to(data.room).emit(
-        "receive_message",
-        data
-      );
+
     }
   );
 
